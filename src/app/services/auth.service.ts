@@ -33,6 +33,15 @@ export class AuthService {
 
   newUser(user: UserModel) {
 
-    
+    const authData = {
+      ...user,
+      returnSecureToken: true
+    };
+
+    return this.http.post(
+      `${this.url}:signUp?key=${this.apiKey}`,
+      authData
+    );
+
   }
 }

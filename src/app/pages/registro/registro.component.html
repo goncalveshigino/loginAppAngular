@@ -46,22 +46,25 @@
                         <span class="focus-input100"></span>
                     </div>
                     
-                  <span 
-                        *ngIf="f.submitted && f.controls['password'].errors"
-                        class="text-danger animated fadeIn">
-                    A senha deve ter mais de 6 letras
+                 <span 
+                 *ngIf="f.submitted && f.controls['password'].errors"
+                  class="text-danger animated fadeIn"
+                >
+                  A senha deve ter mais de 6 letras
                 </span>
 
-                    <div class="wrap-input100 m-b-16" data-validate = "Password is required">
-                        <input class="input100"
-                               type="password" 
-                               name="pass" 
-                               required
-                               minlength="4"
-                               [(ngModel)] ="user.password"
-                               placeholder="Password">
-                        <span class="focus-input100"></span>
-                    </div>
+                <div class="wrap-input100 m-b-16" data-validate = "Password is required">
+                    <input class="input100"
+                           type="password" 
+                           name="password" 
+                           required
+                           minlength="6"
+                           [(ngModel)]="user.password"
+                           placeholder="Password">
+                    <span class="focus-input100"></span>
+                </div>
+
+
                     
                     <div class="flex-sb-m w-full p-t-3 p-b-24">
                         <div class="contact100-form-checkbox">
