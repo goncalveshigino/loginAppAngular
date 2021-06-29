@@ -27,6 +27,17 @@ export class AuthService {
   }
   
   login(user: UserModel) {
+
+    const authData = {
+      ...user,
+      returnSecureToken: true
+    };
+
+    return this.http.post(
+      `${this.url}:signInWithPassword?key=${this.apiKey}`,
+      authData
+    );
+
     
   }
   
