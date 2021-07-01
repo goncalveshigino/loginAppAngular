@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { UserModel } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   user: UserModel = new UserModel();
   
-  constructor( private auth: AuthService) { }
+  constructor( private auth: AuthService, private router: Router ) { }
 
   ngOnInit() {
 
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
           
         console.log(resp);
         Swal.close();
+        this.router.navigateByUrl('/home')
 
       }, (err) => {
           
