@@ -19,11 +19,11 @@ export class AuthService {
      this.readToken();
    }
   
-
+//Destruir o token
   logout() {
-    
-
+    localStorage.removeItem('token');
   }
+
   
   login(user: UserModel) {
 
@@ -73,6 +73,7 @@ export class AuthService {
     
   }
   
+  //lerToken
   readToken() {
     
     if (localStorage.getItem('token')) {
@@ -80,6 +81,11 @@ export class AuthService {
     }
     
     return this.userToken;
+  }
+
+  isAuthenticated(): boolean {
+
+    return this.userToken.length > 2;
   }
 
 }
