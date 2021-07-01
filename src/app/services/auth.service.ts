@@ -69,8 +69,14 @@ export class AuthService {
   private saveToken(idToken: string) {
      
     this.userToken = idToken;
-    localStorage.setItem('token', idToken);
-    
+    localStorage.setItem('token', idToken); 
+
+    //Pegar a data atual e verificar quando expira o token
+    let today = new Date();
+    today.setSeconds(3600); 
+
+    localStorage.setItem('expira', today.getTime().toString());
+
   }
   
   //lerToken
@@ -83,9 +89,26 @@ export class AuthService {
     return this.userToken;
   }
 
+
   isAuthenticated(): boolean {
 
-    return this.userToken.length > 2;
+    if (this.userToken.length < 2) {
+      return false;
+    }
+
+    const expira = Number(localStorage.getItem('expira'));
+    const expiraDate = new Date();
+    expiraDate.setTime(expira);
+
+
+    if (expiraDate > new Date()) {
+      return true;
+    } else {
+      return false;
+    }
+     
   }
+
+
 
 }
