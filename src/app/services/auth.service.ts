@@ -19,11 +19,11 @@ export class AuthService {
      this.readToken();
    }
   
-
+//Destruir o token
   logout() {
-    
-
+    localStorage.removeItem('token');
   }
+
   
   login(user: UserModel) {
 
